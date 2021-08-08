@@ -14,6 +14,7 @@ import {AuthService} from "./services/auth.service";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import {environment} from "../environments/environment";
 import {AuthGuard} from "./helpers/auth.guard";
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -28,6 +29,10 @@ const routes: Routes = [
         path: 'dashboard', // child route path
         component: DashboardComponent, // child route component that the router renders
       },
+      {
+        path: 'clients', // child route path
+        component: UserListComponent, // child route component that the router renders
+      },
     ]
   }
 ]
@@ -37,7 +42,8 @@ const routes: Routes = [
     AppComponent,
     MainComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
