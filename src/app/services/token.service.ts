@@ -27,18 +27,6 @@ export class TokenService {
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public setBookedFlight() {
-    let user = this.getUser();
-    user.numberOfFlights = 1;
-    this.saveUser(user);
-  }
-
-  public setUnBookedFlight() {
-    let user = this.getUser();
-    user.numberOfFlights = 0;
-    this.saveUser(user);
-  }
-
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {

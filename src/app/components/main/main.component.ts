@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenService} from "../../services/token.service";
 
 @Component({
   selector: 'app-main',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  constructor() { }
+  role="";
+  username="";
+  constructor(private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    this.role = this.tokenService.getUser().roles[0];
+    this.username = this.tokenService.getUser().username;
   }
 
   logout() {
