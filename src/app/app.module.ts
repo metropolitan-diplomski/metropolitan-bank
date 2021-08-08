@@ -8,6 +8,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
+import {TokenService} from "./services/token.service";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -27,7 +28,9 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [
+    TokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
