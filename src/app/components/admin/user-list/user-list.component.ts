@@ -12,13 +12,21 @@ export class UserListComponent implements OnInit {
   @Input()
   clients: boolean = true
   users: User[] = [];
-
+  userText = "clients";
+  buttonText = "client";
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.load(this.clients).subscribe(data => {
       this.users = data;
     })
+    if (this.clients) {
+      this.userText = "clients";
+      this.buttonText = "client";
+    } else {
+      this.userText = "employees"
+      this.buttonText = "employee"
+    }
   }
 
 }

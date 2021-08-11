@@ -1,7 +1,9 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3  d-flex justify-content-between align-items-center">
-    <h6 class="m-0 font-weight-bold text-primary">Application users</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Bank {{userText}}</h6>
+    <a *ngIf="clients" class="btn btn-primary" [routerLink]="['/admin/client-create']">Create {{buttonText}}</a>
+    <a *ngIf="!clients" class="btn btn-primary" [routerLink]="['/admin/client-employee']">Create {{buttonText}}</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -9,6 +11,7 @@
         <thead>
         <tr>
           <th>Username</th>
+          <th *ngIf="clients" >JMBG</th>
           <th>Full Name</th>
           <th>Email</th>
           <th>Actions</th>
@@ -17,6 +20,7 @@
         <tbody>
         <tr *ngFor="let user of users">
           <td>{{user.username}}</td>
+          <td *ngIf="clients" >{{user.jmbg}}</td>
           <td>{{user.fullName}}</td>
           <td><span class="badge badge-info">{{user.email}}</span></td>
           <td>

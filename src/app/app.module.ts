@@ -15,6 +15,10 @@ import {AuthInterceptor} from "./helpers/auth.interceptor";
 import {environment} from "../environments/environment";
 import {AuthGuard} from "./helpers/auth.guard";
 import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { ClientListComponent } from './components/admin/client-list/client-list.component';
+import { EmployeeListComponent } from './components/admin/employee-list/employee-list.component';
+import { ClientCreateComponent } from './components/admin/client-create/client-create.component';
+import { EmployeeCreateComponent } from './components/admin/employee-create/employee-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -31,7 +35,19 @@ const routes: Routes = [
       },
       {
         path: 'clients', // child route path
-        component: UserListComponent, // child route component that the router renders
+        component: ClientListComponent, // child route component that the router renders
+      },
+      {
+        path: 'employees', // child route path
+        component: EmployeeListComponent, // child route component that the router renders
+      },
+      {
+        path: 'client-create', // child route path
+        component: ClientCreateComponent, // child route component that the router renders
+      },
+      {
+        path: 'client-employee', // child route path
+        component: EmployeeCreateComponent, // child route component that the router renders
       },
     ]
   }
@@ -43,7 +59,11 @@ const routes: Routes = [
     MainComponent,
     LoginComponent,
     DashboardComponent,
-    UserListComponent
+    UserListComponent,
+    ClientListComponent,
+    EmployeeListComponent,
+    ClientCreateComponent,
+    EmployeeCreateComponent
   ],
   imports: [
     BrowserModule,

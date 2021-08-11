@@ -17,11 +17,11 @@ export class UserService {
     );
   }
 
-  create(user: User) {
-    return this.http.post(this.baseUrl + "/auth/users", user);
+  create(user: any, clients: boolean) {
+    return this.http.post(this.baseUrl + "/auth/users?clients=" + clients, user);
   }
 
   createUserFormObject(item: any) {
-    return new User(item.username, item.email, item.fullName, item.roles, "");
+    return new User(item.username, item.email, item.fullName, item.roles, item.jmbg, item.address);
   }
 }
