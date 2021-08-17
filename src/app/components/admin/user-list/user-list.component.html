@@ -24,8 +24,8 @@
           <td>{{user.fullName}}</td>
           <td><span class="badge badge-info">{{user.email}}</span></td>
           <td>
-            <button type="button" class="btn btn-info btn-circle btn-sm"><i
-              class="fas fa-info-circle"></i></button> &nbsp;
+            <a type="button" class="btn btn-info btn-circle btn-sm"><i
+              class="fas fa-info-circle" [routerLink]="['/admin/client', user.id]"></i></a> &nbsp;
             <button type="button" class="btn btn-danger btn-circle btn-sm"><i
               class="fas fa-trash"></i></button>
           </td>

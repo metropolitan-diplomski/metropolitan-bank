@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../../services/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main',
@@ -9,7 +10,7 @@ import {TokenService} from "../../services/token.service";
 export class MainComponent implements OnInit {
   role="";
   username="";
-  constructor(private tokenService: TokenService) { }
+  constructor(private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
     this.role = this.tokenService.getUser().roles[0];
@@ -17,7 +18,8 @@ export class MainComponent implements OnInit {
   }
 
   logout() {
-
+    this.tokenService.signOut();
+    this.router.navigate(['/login']);
   }
 
 }

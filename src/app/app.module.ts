@@ -19,6 +19,8 @@ import { ClientListComponent } from './components/admin/client-list/client-list.
 import { EmployeeListComponent } from './components/admin/employee-list/employee-list.component';
 import { ClientCreateComponent } from './components/admin/client-create/client-create.component';
 import { EmployeeCreateComponent } from './components/admin/employee-create/employee-create.component';
+import { ClientInfoComponent } from './components/admin/client-info/client-info.component';
+import {AccountService} from "./services/account.service";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -49,6 +51,10 @@ const routes: Routes = [
         path: 'client-employee', // child route path
         component: EmployeeCreateComponent, // child route component that the router renders
       },
+      {
+        path: 'client/:id', // child route path
+        component: ClientInfoComponent, // child route component that the router renders
+      },
     ]
   }
 ]
@@ -63,7 +69,8 @@ const routes: Routes = [
     ClientListComponent,
     EmployeeListComponent,
     ClientCreateComponent,
-    EmployeeCreateComponent
+    EmployeeCreateComponent,
+    ClientInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,8 @@ const routes: Routes = [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },
     TokenService,
-    AuthService
+    AuthService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })

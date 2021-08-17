@@ -21,7 +21,13 @@ export class UserService {
     return this.http.post(this.baseUrl + "/auth/users?clients=" + clients, user);
   }
 
+  loadById(id: string) {
+    return this.http.get(this.baseUrl + "/auth/users/" + id).pipe(
+      map((data: any) =>  this.createUserFormObject(data)),
+    );
+  }
+
   createUserFormObject(item: any) {
-    return new User(item.username, item.email, item.fullName, item.roles, item.jmbg, item.address);
+    return new User(item.id, item.username, item.email, item.fullName, item.roles, item.jmbg, item.address);
   }
 }
