@@ -21,6 +21,8 @@ import { ClientCreateComponent } from './components/admin/client-create/client-c
 import { EmployeeCreateComponent } from './components/admin/employee-create/employee-create.component';
 import { ClientInfoComponent } from './components/admin/client-info/client-info.component';
 import {AccountService} from "./services/account.service";
+import { AccountsComponent } from './components/client/accounts/accounts.component';
+import { ClientDashboardComponent } from './components/client/client-dashboard/client-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -55,6 +57,22 @@ const routes: Routes = [
         path: 'client/:id', // child route path
         component: ClientInfoComponent, // child route component that the router renders
       },
+    ],
+  },
+  {
+    path: 'client',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['ROLE_USER']},
+    children: [
+      {
+        path: 'dashboard', // child route path
+        component: ClientDashboardComponent, // child route component that the router renders
+      },
+      {
+        path: 'accounts', // child route path
+        component: AccountsComponent, // child route component that the router renders
+      }
     ]
   }
 ]
@@ -70,7 +88,9 @@ const routes: Routes = [
     EmployeeListComponent,
     ClientCreateComponent,
     EmployeeCreateComponent,
-    ClientInfoComponent
+    ClientInfoComponent,
+    AccountsComponent,
+    ClientDashboardComponent
   ],
   imports: [
     BrowserModule,

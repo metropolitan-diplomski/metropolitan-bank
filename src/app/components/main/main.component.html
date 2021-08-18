@@ -33,6 +33,19 @@
       </li>
     </div>
 
+    <div *ngIf="role=='ROLE_USER'">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/client/dashboard']">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Dashboard</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/client/accounts']">
+          <i class="fas fa-fw fa-credit-card"></i>
+          <span>Accounts</span></a>
+      </li>
+    </div>
+
 <!--    <div *ngIf="role=='ROLE_ADMIN'">-->
 <!--      &lt;!&ndash; Divider &ndash;&gt;-->
 <!--      <hr class="sidebar-divider">-->
