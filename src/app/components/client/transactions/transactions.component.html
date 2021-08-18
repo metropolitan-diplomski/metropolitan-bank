@@ -1,0 +1,27 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3  d-flex justify-content-between align-items-center">
+    <h6 class="m-0 font-weight-bold text-primary">Account transactions</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Recipient</th>
+          <th>Amount</th>
+          <th>Transaction time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let trs of transactions">
+          <td [ngClass]="{'text-success': isIncome(trs), 'text-warning': !isIncome(trs)}" >{{trs.sender.fullName}}({{trs.sender.accountNumber}})</td>
+          <td [ngClass]="{'text-success': isIncome(trs), 'text-warning': !isIncome(trs)}" >{{trs.recipient.fullName}}({{trs.recipient.accountNumber}})</td>
+          <td [ngClass]="{'text-success': isIncome(trs), 'text-warning': !isIncome(trs)}" >{{trs.amount}}</td>
+          <td [ngClass]="{'text-success': isIncome(trs), 'text-warning': !isIncome(trs)}" >{{trs.transactionTime}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

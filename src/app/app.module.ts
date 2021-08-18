@@ -23,6 +23,9 @@ import { ClientInfoComponent } from './components/admin/client-info/client-info.
 import {AccountService} from "./services/account.service";
 import { AccountsComponent } from './components/client/accounts/accounts.component';
 import { ClientDashboardComponent } from './components/client/client-dashboard/client-dashboard.component';
+import { AccountInfoComponent } from './components/client/account-info/account-info.component';
+import { TransactionsComponent } from './components/client/transactions/transactions.component';
+import {TransactionService} from "./services/transaction.service";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -72,6 +75,10 @@ const routes: Routes = [
       {
         path: 'accounts', // child route path
         component: AccountsComponent, // child route component that the router renders
+      },
+      {
+        path: 'account/:id', // child route path
+        component: AccountInfoComponent, // child route component that the router renders
       }
     ]
   }
@@ -90,7 +97,9 @@ const routes: Routes = [
     EmployeeCreateComponent,
     ClientInfoComponent,
     AccountsComponent,
-    ClientDashboardComponent
+    ClientDashboardComponent,
+    AccountInfoComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +113,8 @@ const routes: Routes = [
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },
     TokenService,
     AuthService,
-    AccountService
+    AccountService,
+    TransactionService
   ],
   bootstrap: [AppComponent]
 })
