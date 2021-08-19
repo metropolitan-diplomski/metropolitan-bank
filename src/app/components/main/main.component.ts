@@ -9,12 +9,12 @@ import {Router} from "@angular/router";
 })
 export class MainComponent implements OnInit {
   role="";
-  username="";
+  fullName="";
   constructor(private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
     this.role = this.tokenService.getUser().roles[0];
-    this.username = this.tokenService.getUser().username;
+    this.fullName = this.tokenService.getUser().fullName;
   }
 
   logout() {

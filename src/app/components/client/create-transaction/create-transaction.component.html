@@ -1,0 +1,108 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3  d-flex justify-content-between align-items-center">
+    <h6 class="m-0 font-weight-bold text-primary">Create transaction</h6>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="account">Select account from which you want to make transaction</label>
+          <select class="form-control" name="account" id="account"  [(ngModel)]="selectedAccount">
+            <option *ngFor="let acc of accounts" [ngValue]="acc" >
+              {{acc.name}} -- {{acc.accountNumber}} -- {{acc.balance}} {{acc.currency}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="accountNumber"
+                       name="accountNumber" aria-describedby="accountNumberHelp" placeholder="Enter recipient's account number"
+                       [(ngModel)]="form.accountNumber" required #accountNumber="ngModel">
+                <div class="alert alert-danger" role="alert"
+                     *ngIf="accountNumber.errors && f.submitted">
+                  Account number is required!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="fullName"
+                       name="fullName" aria-describedby="fullNameHelp" placeholder="Enter recipient's full name"
+                       [(ngModel)]="form.fullName" required #fullName="ngModel">
+                <div class="alert alert-danger" role="alert"
+                     *ngIf="fullName.errors && f.submitted">
+                  Full name is required!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="address"
+                       name="address" aria-describedby="fullNameHelp" placeholder="Enter recipient's address"
+                       [(ngModel)]="form.address" required #address="ngModel">
+                <div class="alert alert-danger" role="alert"
+                     *ngIf="address.errors && f.submitted">
+                  Address is required!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="transactionDescription"
+                       name="transactionDescription" placeholder="Enter transaction description" [(ngModel)]="form.transactionDescription" required
+                       #transactionDescription="ngModel">
+                <div class="alert alert-danger" role="alert"
+                     *ngIf="transactionDescription.errors && f.submitted">
+                  <div *ngIf="transactionDescription.errors.required">Transaction description is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="number" class="form-control form-control-user" id="transactionCode"
+                       name="transactionCode" aria-describedby="transactionCodeHelp" placeholder="Enter transaction code"
+                       [(ngModel)]="form.transactionCode" required #transactionCode="ngModel">
+                <div class="alert alert-danger" role="alert"
+                     *ngIf="transactionCode.errors && f.submitted">
+                  Transaction code is required!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="identifier"
+                       name="identifier" aria-describedby="identifierHelp" placeholder="Enter identifier (optional)"
+                       [(ngModel)]="form.identifier" #identifier="ngModel">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="number" class="form-control form-control-user" id="amount"
+                       name="amount" aria-describedby="transactionCodeHelp" placeholder="Enter amount"
+                       [(ngModel)]="form.amount" required #amount="ngModel">
+                <div class="alert alert-danger" role="alert"
+                     *ngIf="amount.errors && f.submitted">
+                  Amount is required!
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-user btn-block">
+            Create transaction
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

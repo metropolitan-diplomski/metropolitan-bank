@@ -21,4 +21,5 @@ export class Transaction {
     this.amount = amount;
     this.transactionTime = transactionTime;
   }
+
 }
