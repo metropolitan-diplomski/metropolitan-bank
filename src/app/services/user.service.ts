@@ -27,6 +27,20 @@ export class UserService {
     );
   }
 
+  delete(id: string) {
+    return this.http.delete(this.baseUrl + "/auth/users/" + id);
+  }
+
+  loadProfile() {
+    return this.http.get(this.baseUrl + "/auth/profile").pipe(
+      map((data: any) =>  this.createUserFormObject(data)),
+    );
+  }
+
+  changePassword(req: any) {
+    return this.http.put(this.baseUrl + "/auth/profile/change-password", req);
+  }
+
   createUserFormObject(item: any) {
     return new User(item.id, item.username, item.email, item.fullName, item.roles, item.jmbg, item.address);
   }

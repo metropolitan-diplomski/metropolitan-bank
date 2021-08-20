@@ -17,9 +17,7 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.load(this.clients).subscribe(data => {
-      this.users = data;
-    })
+    this.load();
     if (this.clients) {
       this.userText = "clients";
       this.buttonText = "client";
@@ -27,6 +25,18 @@ export class UserListComponent implements OnInit {
       this.userText = "employees"
       this.buttonText = "employee"
     }
+  }
+
+  load() {
+    this.userService.load(this.clients).subscribe(data => {
+      this.users = data;
+    });
+  }
+
+  delete(id: string) {
+    this.userService.delete(id).subscribe(data => {
+      this.load();
+    })
   }
 
 }

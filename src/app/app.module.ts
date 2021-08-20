@@ -27,6 +27,7 @@ import { AccountInfoComponent } from './components/client/account-info/account-i
 import { TransactionsComponent } from './components/client/transactions/transactions.component';
 import {TransactionService} from "./services/transaction.service";
 import { CreateTransactionComponent } from './components/client/create-transaction/create-transaction.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -61,6 +62,10 @@ const routes: Routes = [
         path: 'client/:id', // child route path
         component: ClientInfoComponent, // child route component that the router renders
       },
+      {
+        path: 'profile', // child route path
+        component: ProfileComponent, // child route component that the router renders
+      },
     ],
   },
   {
@@ -84,6 +89,10 @@ const routes: Routes = [
       {
         path: 'transaction/create', // child route path
         component: CreateTransactionComponent, // child route component that the router renders
+      },
+      {
+        path: 'profile', // child route path
+        component: ProfileComponent, // child route component that the router renders
       }
     ]
   }
@@ -105,7 +114,8 @@ const routes: Routes = [
     ClientDashboardComponent,
     AccountInfoComponent,
     TransactionsComponent,
-    CreateTransactionComponent
+    CreateTransactionComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

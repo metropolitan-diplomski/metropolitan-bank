@@ -31,6 +31,11 @@
           <i class="fas fa-fw fa-users"></i>
           <span>Employees</span></a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/admin/profile']">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Profile</span></a>
+      </li>
     </div>
 
     <div *ngIf="role=='ROLE_USER'">
@@ -48,6 +53,11 @@
         <a class="nav-link" [routerLink]="['/client/transaction/create']">
           <i class="fas fa-fw fa-money-bill-wave"></i>
           <span>Create transaction</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/client/profile']">
+          <i class="fas fa-fw fa-money-bill-wave"></i>
+          <span>Profile</span></a>
       </li>
     </div>
 
