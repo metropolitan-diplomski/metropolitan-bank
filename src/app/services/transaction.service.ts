@@ -23,6 +23,12 @@ export class TransactionService {
     );
   }
 
+  loadById(id: string) {
+    return this.http.get(this.baseUrl + "/transaction/trs/by-id/" + id).pipe(
+      map((data: any) =>  this.createTransaction(data)),
+    );
+  }
+
   createTransaction(transaction: Transaction) {
     return this.http.post(this.baseUrl + "/transaction/trs/create", transaction);
   }

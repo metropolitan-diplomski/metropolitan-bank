@@ -53,4 +53,10 @@ export class ClientInfoComponent implements OnInit {
       document.getElementById('closeModalButton').click();
     });
   }
+
+  delete(id: string): void {
+    this.accountService.delete(id).subscribe(data => {
+      this.loadAccounts();
+    })
+  }
 }

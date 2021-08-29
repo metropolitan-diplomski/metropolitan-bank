@@ -11,6 +11,7 @@
           <th>Recipient</th>
           <th>Amount</th>
           <th>Transaction time</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,10 @@
           <td [ngClass]="{'text-success': isIncome(trs), 'text-warning': !isIncome(trs)}" >{{trs.recipient.fullName}}({{trs.recipient.accountNumber}})</td>
           <td [ngClass]="{'text-success': isIncome(trs), 'text-warning': !isIncome(trs)}" >{{trs.amount}}</td>
           <td [ngClass]="{'text-success': isIncome(trs), 'text-warning': !isIncome(trs)}" >{{trs.transactionTime}}</td>
+          <td>
+            <a type="button" class="btn btn-info btn-circle btn-sm"><i
+              class="fas fa-info-circle" [routerLink]="['/transaction/info', trs.id]"></i></a>
+          </td>
         </tr>
         </tbody>
       </table>

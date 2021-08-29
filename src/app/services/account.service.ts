@@ -23,6 +23,10 @@ export class AccountService {
     );
   }
 
+  delete(id: string) {
+    return this.http.delete(this.baseUrl + "/account/" + id);
+  }
+
   create(account: any) {
     return this.http.post(this.baseUrl + "/account/", account);
   }

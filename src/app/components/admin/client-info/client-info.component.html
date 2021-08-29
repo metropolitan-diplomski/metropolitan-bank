@@ -1,6 +1,6 @@
 <!-- DataTales Example -->
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="card shadow mb-4">
       <div class="card-header py-3  d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">Client info</h6>
@@ -71,7 +71,7 @@
     </div>
   </div>
 
-  <div class="col-md-9">
+  <div class="col-md-8">
     <div class="card shadow mb-4">
       <div class="card-header py-3  d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">Client accounts</h6>
@@ -84,7 +84,7 @@
             <tr>
               <th>Account name</th>
               <th>Account number</th>
-              <th>Account currency</th>
+              <th>Currency</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -95,9 +95,9 @@
               <td>{{account.currency}}</td>
               <td>
                 <a type="button" class="btn btn-info btn-circle btn-sm"><i
-                  class="fas fa-info-circle" [routerLink]="['/admin/client', user.id]"></i></a> &nbsp;
+                  class="fas fa-info-circle" [routerLink]="['/admin/account', account.id]"></i></a> &nbsp;
                 <button type="button" class="btn btn-danger btn-circle btn-sm"><i
-                  class="fas fa-trash"></i></button>
+                  class="fas fa-trash" (click)="delete(account.id)"></i></button>
               </td>
             </tr>
             </tbody>

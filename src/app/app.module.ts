@@ -28,10 +28,20 @@ import { TransactionsComponent } from './components/client/transactions/transact
 import {TransactionService} from "./services/transaction.service";
 import { CreateTransactionComponent } from './components/client/create-transaction/create-transaction.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { TransactionInfoComponent } from './components/client/transaction-info/transaction-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'transaction',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['ROLE_ADMIN', 'ROLE_USER']},
+    children: [
+      { path: 'info/:id', component: TransactionInfoComponent },
+    ]
+  },
   {
     path: 'admin',
     component: MainComponent,
@@ -61,6 +71,10 @@ const routes: Routes = [
       {
         path: 'client/:id', // child route path
         component: ClientInfoComponent, // child route component that the router renders
+      },
+      {
+        path: 'account/:id', // child route path
+        component: AccountInfoComponent, // child route component that the router renders
       },
       {
         path: 'profile', // child route path
@@ -93,7 +107,7 @@ const routes: Routes = [
       {
         path: 'profile', // child route path
         component: ProfileComponent, // child route component that the router renders
-      }
+      },
     ]
   }
 ]
@@ -115,7 +129,8 @@ const routes: Routes = [
     AccountInfoComponent,
     TransactionsComponent,
     CreateTransactionComponent,
-    ProfileComponent
+    ProfileComponent,
+    TransactionInfoComponent
   ],
   imports: [
     BrowserModule,
