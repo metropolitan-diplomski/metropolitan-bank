@@ -28,6 +28,7 @@ export class AccountInfoComponent implements OnInit {
     identifier: null,
     amount: null
   }
+  role: string;
 
   constructor(private route: ActivatedRoute,
               private accountService: AccountService,
@@ -35,6 +36,7 @@ export class AccountInfoComponent implements OnInit {
               private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    this.role = this.tokenService.getUser().roles[0];
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.loadAccount();

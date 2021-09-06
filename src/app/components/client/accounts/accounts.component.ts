@@ -11,10 +11,12 @@ import {TokenService} from "../../../services/token.service";
 export class AccountsComponent implements OnInit {
   // @ts-ignore
   accounts: Account[];
+  role: string;
 
   constructor(private accountService: AccountService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    this.role = this.tokenService.getUser().roles[0];
     this.accountService.load(this.tokenService.getUser().id).subscribe(data => {
       this.accounts = data;
     });
